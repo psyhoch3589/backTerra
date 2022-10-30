@@ -1,4 +1,4 @@
-package Entity;
+package Entity.Store;
 
 public class PaymentMethod {
 }

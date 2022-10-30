@@ -1,4 +1,4 @@
-package Entity;
+package Entity.Store;
 
 import java.time.LocalDate;
 import java.util.List;

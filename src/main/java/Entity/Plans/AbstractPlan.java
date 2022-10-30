@@ -1,4 +1,4 @@
-package Entity;
+package Entity.Plans;
 
 public abstract class AbstractPlan {
 }
