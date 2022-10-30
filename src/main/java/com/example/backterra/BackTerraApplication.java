@@ -8,7 +8,7 @@ public class BackTerraApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(BackTerraApplication.class, args);
-        zjbad
+        System.out.println("ok");
     }
 
 }
