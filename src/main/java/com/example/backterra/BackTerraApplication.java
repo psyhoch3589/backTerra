@@ -11,5 +11,4 @@ public class BackTerraApplication {
         System.out.println("ok");
     }
     //test
-    //test2.0
 }
