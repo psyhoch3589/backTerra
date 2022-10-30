@@ -1,4 +1,4 @@
-package Entity;
+package Entity.user;
 
 import java.time.LocalDate;
 

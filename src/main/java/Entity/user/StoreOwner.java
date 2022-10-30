@@ -1,8 +1,10 @@
-package Entity;
+package Entity.user;
+
+import Entity.user.User;
 
 import java.time.LocalDate;
 
-public class StoreOwner extends User{
+public class StoreOwner extends User {
     public StoreOwner(long id, String username, String firstName, String lastName, LocalDate birthday, String phone, String email, String password) {
         super(id, username, firstName, lastName, birthday, phone, email, password);
     }
