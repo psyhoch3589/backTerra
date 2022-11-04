@@ -2,7 +2,7 @@ package Entity.user;
 
 import java.time.LocalDate;
 
-public abstract class User {
+public class User {
     protected long id;
     protected String username;
     protected String firstName;
@@ -85,5 +85,26 @@ public abstract class User {
         Phone = phone;
         this.email = email;
         this.password = password;
+    }
+
+    public User(long id, String username, String email, String password) {
+        this.id = id;
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", birthday=" + birthday +
+                ", Phone='" + Phone + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
     }
 }
