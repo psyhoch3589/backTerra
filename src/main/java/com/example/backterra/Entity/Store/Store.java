@@ -1,4 +1,4 @@
-package Entity.Store;
+package com.example.backterra.Entity.Store;
 
 import java.time.LocalDate;
 import java.util.List;

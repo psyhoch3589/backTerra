@@ -1,15 +1,26 @@
-package Entity.user;
+package com.example.backterra.Entity.user;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
-public class User {
+@MappedSuperclass
+    public abstract class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     protected long id;
+    @Column(name = "username" )
     protected String username;
+    @Column(name = "firstName" )
     protected String firstName;
+    @Column(name = "lastName" )
     protected String lastName;
-    protected LocalDate birthday;
+    /*@Column(name = "birthday" )
+    protected LocalDate birthday;*/
+    @Column(name = "Phone" )
     protected String Phone;
+    @Column(name = "email" )
     protected String email;
+    @Column(name = "password" )
     protected String password;
 
     public long getId() {
@@ -44,13 +55,13 @@ public class User {
         this.lastName = lastName;
     }
 
-    public LocalDate getBirthday() {
+    /*public LocalDate getBirthday() {
         return birthday;
     }
 
     public void setBirthday(LocalDate birthday) {
-        this.birthday = birthday;
-    }
+        this.birthday = birthday;*/
+    //}
 
     public String getPhone() {
         return Phone;
@@ -76,13 +87,20 @@ public class User {
         this.password = password;
     }
 
-    public User(long id, String username, String firstName, String lastName, LocalDate birthday, String phone, String email, String password) {
-        this.id = id;
+    public User(String username, String firstName, String lastName, String phone, String email, String password) {
         this.username = username;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthday = birthday;
+        //this.birthday = birthday;
         Phone = phone;
+        this.email = email;
+        this.password = password;
+    }
+
+
+    public User(String username, String firstName, String email, String password) {
+        this.username = username;
+        this.firstName = firstName;
         this.email = email;
         this.password = password;
     }
@@ -94,6 +112,14 @@ public class User {
         this.password = password;
     }
 
+    public User() {
+    }
+
+
+    public User(long id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -101,7 +127,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", birthday=" + birthday +
+                //", birthday=" + birthday +
                 ", Phone='" + Phone + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
