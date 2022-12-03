@@ -1,5 +1,6 @@
 package com.example.backterra.repositories;
 
+
 import com.example.backterra.Entity.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -11,6 +12,6 @@ public interface UserRepository extends JpaRepository<User,Long> {
         return true;
     }
 
-    @Query("SELECT p FROM StoreOwner p WHERE LOWER(p.email)=LOWER(:q)")
-    User findByEmail(@Param("q") String q);
+    @Query("SELECT p FROM StoreOwner p WHERE LOWER(p.email)=LOWER(:q) AND LOWER(p.password)=LOWER(:pass) ")
+    User findByEmailAndPassword(@Param("q") String email, @Param("pass") String password);
 }

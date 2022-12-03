@@ -1,5 +1,6 @@
 package com.example.backterra.Service;
 
+
 import com.example.backterra.Entity.Store.Product;
 import com.example.backterra.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import java.util.Objects;
 
 @Service
 public class ProductService {
+    @Autowired
+    ProductRepository pr;
 
     private final ProductRepository productRepository;
 
@@ -39,12 +42,19 @@ public class ProductService {
     public void updateProduct(Long productId, String name, double prix) {
         Product product=productRepository.findById(productId)
                 .orElseThrow(()->new IllegalStateException("product with id "+productId+" doesn't exist"));
-        if(name != null && name.length()>0 && !Objects.equals(product.getName(),name)){
-            product.setName(name);
+        if(name != null && name.length()>0 && !Objects.equals(product.getTitle(),name)){
+            product.setTitle(name);
         }
 
         if(prix>0 && (product.getPrix()!=prix)){
             product.setPrix(prix);
         }
+    }
+
+    public List<Product> showAllProducts(){
+        return this.pr.findAll();
+    }
+    public Product save(Product product){
+        return  this.pr.save(product);
     }
 }

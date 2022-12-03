@@ -11,7 +11,7 @@ import java.util.List;
 
 @Configuration
 public class ProductConfig {
-    @Bean
+    /*@Bean
     CommandLineRunner commandLineRunner(ProductRepository repository){
         return args -> {
             Product product1 = new Product(
@@ -25,5 +25,5 @@ public class ProductConfig {
 
             repository.saveAll(List.of(product1,product2));
         };
-    }
+    }*/
 }

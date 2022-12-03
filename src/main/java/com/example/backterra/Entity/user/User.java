@@ -1,7 +1,7 @@
 package com.example.backterra.Entity.user;
 
+
 import javax.persistence.*;
-import java.time.LocalDate;
 
 @MappedSuperclass
     public abstract class User {
@@ -22,11 +22,6 @@ import java.time.LocalDate;
     protected String email;
     @Column(name = "password" )
     protected String password;
-
-    public User() {
-
-    }
-
 
     public long getId() {
         return id;
@@ -138,6 +133,4 @@ import java.time.LocalDate;
                 ", password='" + password + '\'' +
                 '}';
     }
-
-
 }

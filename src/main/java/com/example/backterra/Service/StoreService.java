@@ -1,18 +1,14 @@
 package com.example.backterra.Service;
 
 import com.example.backterra.Entity.Store.PaymentMethod;
-import com.example.backterra.Entity.Store.Product;
 import com.example.backterra.Entity.Store.Store;
 import com.example.backterra.repositories.PaymentMethodRepository;
-import com.example.backterra.repositories.ProductRepository;
 import com.example.backterra.repositories.StoreRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
 
 @Service
 public class StoreService {

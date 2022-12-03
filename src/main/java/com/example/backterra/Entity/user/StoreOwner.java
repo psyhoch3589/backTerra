@@ -1,26 +1,25 @@
 package com.example.backterra.Entity.user;
 
-import java.time.LocalDate;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "StoreOwner")
 public class StoreOwner extends User {
-    public StoreOwner(long id, String username, String firstName, String lastName, LocalDate birthday, String phone, String email, String password) {
-        super(id, username, firstName, lastName, birthday, phone, email, password);
-    }
-    public StoreOwner(){
-        super();
+    public StoreOwner( String username, String firstName, String lastName, String phone, String email, String password) {
+        super(username, firstName, lastName, phone, email, password);
     }
 
-    @Override
-    public String toString() {
-        return "StoreOwner{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", birthday=" + birthday +
-                ", Phone='" + Phone + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public StoreOwner(long id) {
+        super(id);
+    }
+
+    public StoreOwner() {
+
+    }
+
+
+    public StoreOwner(String username, String firstName, String email, String password) {
+        super(username, firstName, email, password);
     }
 }

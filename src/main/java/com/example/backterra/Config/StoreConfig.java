@@ -2,11 +2,8 @@ package com.example.backterra.Config;
 
 
 import com.example.backterra.Entity.Store.PaymentMethod;
-import com.example.backterra.Entity.Store.Product;
 import com.example.backterra.Entity.Store.Store;
-import com.example.backterra.Service.StoreService;
 import com.example.backterra.repositories.PaymentMethodRepository;
-import com.example.backterra.repositories.ProductRepository;
 import com.example.backterra.repositories.StoreRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -18,7 +15,7 @@ import java.util.List;
 @Configuration
 public class StoreConfig {
 
-    @Bean
+    /*@Bean
     CommandLineRunner commandLineRunner2(StoreRepository repository, PaymentMethodRepository repository2){
         return args -> {
             Store store1 = new Store(
@@ -55,6 +52,6 @@ public class StoreConfig {
 
         };
 
-    }
+    }*/
 }
 

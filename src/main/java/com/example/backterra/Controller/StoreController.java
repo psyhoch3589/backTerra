@@ -2,9 +2,7 @@ package com.example.backterra.Controller;
 
 
 import com.example.backterra.Entity.Store.PaymentMethod;
-import com.example.backterra.Entity.Store.Product;
 import com.example.backterra.Entity.Store.Store;
-import com.example.backterra.Service.ProductService;
 import com.example.backterra.Service.StoreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

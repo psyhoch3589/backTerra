@@ -1,41 +1,25 @@
 package com.example.backterra.Entity.Store;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+
+
+import javax.persistence.*;
 
 @Entity
-@Table
+@Table(name = "product")
 public class Product {
-
     @Id
-    private Long id;
-    private String name;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected long id;
+    @Column(name = "title")
+    protected String title;
+    @Column(name = "prix")
     private double prix;
 
-    public Product() {
-    }
-
-    public Product(Long id, String name, double prix) {
+    public Product(long id, String title, double prix) {
         this.id = id;
-        this.name = name;
+        this.title = title;
         this.prix = prix;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public double getPrix() {
@@ -46,12 +30,59 @@ public class Product {
         this.prix = prix;
     }
 
+    @ManyToOne
+    @JoinColumn(name = "command_id")
+    private Command command;
+
+
+    public Product() {
+    }
+
+    public Product(Command command) {
+        this.command = command;
+    }
+
+    public Product(long id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
+
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public Product(String title) {
+        this.title = title;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Command getCommand() {
+        return command;
+    }
+
+    public void setCommand(Command command) {
+        this.command = command;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", prix=" + prix +
+                ", title='" + title + '\'' +
+                ", command=" + command +
                 '}';
     }
 }
