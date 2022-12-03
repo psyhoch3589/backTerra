@@ -1,4 +1,4 @@
-package Entity.user;
+package com.example.backterra.Entity.user;
 
 import java.time.LocalDate;
 
@@ -11,6 +11,11 @@ public class User {
     protected String Phone;
     protected String email;
     protected String password;
+
+    public User() {
+
+    }
+
 
     public long getId() {
         return id;
@@ -107,4 +112,6 @@ public class User {
                 ", password='" + password + '\'' +
                 '}';
     }
+
+
 }

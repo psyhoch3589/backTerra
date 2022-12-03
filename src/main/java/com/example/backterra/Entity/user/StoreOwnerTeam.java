@@ -1,6 +1,4 @@
-package Entity.user;
-
-import Entity.user.User;
+package com.example.backterra.Entity.user;
 
 import java.time.LocalDate;
 

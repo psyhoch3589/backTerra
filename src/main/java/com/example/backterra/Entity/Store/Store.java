@@ -1,24 +1,38 @@
-package Entity.Store;
+package com.example.backterra.Entity.Store;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+@Entity
+@Table
 public class Store {
-    private UUID id;
+    @Id
+    private Long id;
     private String name;
     private LocalDate startDate;
     private LocalDate endDate;
     private double storage;
     private int traffic;
-    private List<PaymentMethod> paymentMethod;
-    private List<Product> products;
 
-    public UUID getId() {
+    /*@OneToMany(mappedBy="store")
+    private List<PaymentMethod> paymentMethods;*/
+    //private Product products;
+
+    public Store() {
+
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -62,19 +76,32 @@ public class Store {
         this.traffic = traffic;
     }
 
-    public List<PaymentMethod> getPaymentMethod() {
-        return paymentMethod;
+  /* public List<PaymentMethod> getPaymentMethod() {
+        return paymentMethods;
     }
 
     public void setPaymentMethod(List<PaymentMethod> paymentMethod) {
-        this.paymentMethod = paymentMethod;
+        this.paymentMethods = paymentMethod;
     }
 
-    public List<Product> getProducts() {
+    public void addPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethods.add(paymentMethod);
+    }*/
+
+    /* public List<Product> getProducts() {
         return products;
     }
 
     public void setProducts(List<Product> products) {
         this.products = products;
+    }*/
+
+    public Store(Long id, String name, int traffic) {
+        this.id = id;
+        this.name = name;
+        this.traffic = traffic;
+        //paymentMethods = new ArrayList<>();
+
+
     }
 }
