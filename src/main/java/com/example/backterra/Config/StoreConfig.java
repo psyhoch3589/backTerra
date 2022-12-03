@@ -38,7 +38,7 @@ public class StoreConfig {
             );
             PaymentMethod paymentMethod2= new PaymentMethod(
                     2L,
-                    "bank"
+                    "banka"
             );
 
 
