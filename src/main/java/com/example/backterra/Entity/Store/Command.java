@@ -4,6 +4,7 @@ package com.example.backterra.Entity.Store;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Command {
@@ -14,7 +15,7 @@ public class Command {
     @Column(name = "closed")
     private boolean closed;
     @ManyToOne
-    @JoinColumn(name = "cart_id",nullable = false)
+    @JoinColumn(name = "cart_id")
     private Cart cart;
 
 

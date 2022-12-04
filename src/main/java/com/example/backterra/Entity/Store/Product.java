@@ -10,16 +10,24 @@ import javax.persistence.*;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected long id;
+    private long id;
     @Column(name = "title")
-    protected String title;
+    private String title;
     @Column(name = "prix")
     private double prix;
+    @ManyToOne
+    @JoinColumn(name = "command_id")
+    private Command command;
 
+    public Product() {
+    }
     public Product(long id, String title, double prix) {
         this.id = id;
         this.title = title;
         this.prix = prix;
+    }
+    public Product(Command command) {
+        this.command = command;
     }
 
     public double getPrix() {
@@ -30,23 +38,11 @@ public class Product {
         this.prix = prix;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "command_id")
-    private Command command;
-
-
-    public Product() {
-    }
-
-    public Product(Command command) {
-        this.command = command;
-    }
 
     public Product(long id, String title) {
         this.id = id;
         this.title = title;
     }
-
 
 
     public long getId() {
