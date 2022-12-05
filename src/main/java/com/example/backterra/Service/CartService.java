@@ -42,13 +42,12 @@ public class CartService {
         return this.commandRepository.save(Command);
     }
     public List<Product> showOnGoingCommand(Long idCart){
-        /*Command c = this.commandRepository.getCommandByCartId(idCart)
+        Command c = this.commandRepository.getCommandByCartId(idCart)
                 .stream()
                 .filter(x->!x.isClosed())
                 .findFirst()
-                .get();//if empty we gonna have error
-        return this.pr.fetchProducts(c.getId());*/
-        return null;
+                .get();
+        return this.pr.fetchProducts(c.getId());
     }
     public boolean fillCommandByProducts(List<Product> products ,Cart cart){
         Command command = this.commandRepository.getCommandByCartId(cart.getId())
@@ -60,12 +59,7 @@ public class CartService {
             x.setCommand(Collections.singletonList(command));
             this.pr.save(x);
         });
-        command.setProduct(products);
-        this.commandRepository.save(command);
         return true;
-    }
-    public Product convertToObject(Product p){
-        return new Product(p.getId(),p.getTitle());
     }
 
     public void deleteProductById(Long idCart , Long idProd){

@@ -14,13 +14,7 @@ public class Command {
     protected long id;
     @Column(name = "closed")
     private boolean closed;
-    @ManyToMany
-    @JoinTable(
-            name = "product_in_command",
-            joinColumns = @JoinColumn(name = "command_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id")
-    )
-    private List<Product> product;
+
     @ManyToOne
     @JoinColumn(name = "cart_id")
     private Cart cart;
@@ -48,14 +42,6 @@ public class Command {
     }
     public Cart getCart(){
         return cart;
-    }
-
-    public List<Product> getProduct() {
-        return product;
-    }
-
-    public void setProduct(List<Product> product) {
-        this.product = product;
     }
 
     public void setCart(Cart cart) {

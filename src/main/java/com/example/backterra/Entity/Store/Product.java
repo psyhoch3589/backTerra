@@ -16,7 +16,12 @@ public class Product {
     private String title;
     @Column(name = "prix")
     private double prix;
-    @ManyToMany(mappedBy = "product")
+    @ManyToMany
+    @JoinTable(
+            name = "product_in_command",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "command_id")
+    )
     private List<Command> command;
 
     public Product() {
@@ -31,8 +36,7 @@ public class Product {
         this.title = title;
         this.prix = prix;
     }
-    public Product(long id, String title) {
-        this.id = id;
+    public Product(String title) {
         this.title = title;
     }
     public void setCommand(List<Command> command) {
@@ -71,7 +75,6 @@ public class Product {
         return "Product{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", command=" + command +
                 '}';
     }
 }
