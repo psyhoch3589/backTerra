@@ -20,12 +20,6 @@ import java.util.*;
 public class CartController implements CommandLineRunner {
     @Autowired
     CartService cs;
-    @Autowired
-    ProductRepository pr;
-    @Autowired
-    CartRepository crr;
-    @Autowired
-    CommandRepository cr;
 
     public boolean fillOrderByProducts(@RequestBody List<Product> products, @RequestBody Cart cart){
         return this.cs.fillCommandByProducts(products,cart);
@@ -51,11 +45,12 @@ public class CartController implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        Command command = this.cr.save(new Command(this.crr.save(new Cart())));
-        this.pr.save(new Product(command));
-        this.pr.save(new Product(command));
-        this.pr.save(new Product(command));
-        this.pr.save(new Product(command));
-
+        Cart cart = this.cs.addCart();
+        Command command = this.cs.addCommand(cart);
+        List<Product> list = new ArrayList<>();
+        for(int i=0;i<4;i++){
+            list.add(new Product());
+        }
+        fillOrderByProducts(list,cart);
     }
 }

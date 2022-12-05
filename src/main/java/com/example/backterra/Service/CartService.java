@@ -13,6 +13,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -41,12 +42,13 @@ public class CartService {
         return this.commandRepository.save(Command);
     }
     public List<Product> showOnGoingCommand(Long idCart){
-        Command c = this.commandRepository.getCommandByCartId(idCart)
+        /*Command c = this.commandRepository.getCommandByCartId(idCart)
                 .stream()
                 .filter(x->!x.isClosed())
                 .findFirst()
                 .get();//if empty we gonna have error
-        return this.pr.fetchProducts(c.getId());
+        return this.pr.fetchProducts(c.getId());*/
+        return null;
     }
     public boolean fillCommandByProducts(List<Product> products ,Cart cart){
         Command command = this.commandRepository.getCommandByCartId(cart.getId())
@@ -55,9 +57,11 @@ public class CartService {
                 .findFirst()
                 .get();
         products.stream().forEach(x->{
-            x.setCommand(command);
+            x.setCommand(Collections.singletonList(command));
             this.pr.save(x);
         });
+        command.setProduct(products);
+        this.commandRepository.save(command);
         return true;
     }
     public Product convertToObject(Product p){
@@ -65,7 +69,7 @@ public class CartService {
     }
 
     public void deleteProductById(Long idCart , Long idProd){
-        this.pr.deleteProductById(idCart,idProd);
+        //this.pr.deleteProductById(idCart,idProd);
     }
 
 }
