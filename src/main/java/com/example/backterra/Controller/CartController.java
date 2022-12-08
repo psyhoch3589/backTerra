@@ -25,8 +25,8 @@ public class CartController implements CommandLineRunner {
     @Autowired
     CartRepository cartRepository;
 
-    public boolean fillOrderByProducts(@RequestBody List<Product> products, @RequestBody Cart cart){
-        return this.cs.fillCommandByProducts(products,cart);
+    public void fillOrderByProducts(@RequestBody List<Product> products, @RequestBody Cart cart){
+        this.cs.fillCommandByProducts(products,cart);
     }
     @GetMapping(path = "/api/showOnGoingOrder")
     public List<Product> showOnGoingOrder(@RequestParam("idCart") Long idCart) throws InstantiationException, IllegalAccessException {
@@ -34,9 +34,9 @@ public class CartController implements CommandLineRunner {
     }
 
     @DeleteMapping(path = "/api/deleteProductFromOrderById")
-    public String deleteProductById(@RequestParam("idCart") Long idCart , @RequestParam("idProd") Long idProd) {
-        JSONObject obj=new JSONObject();
-        this.cs.deleteProductById(idCart,idProd);
+    public String deleteProductById( @RequestParam("idProd") Long idProd) {
+        JSONObject obj = new JSONObject();
+        this.cs.deleteProductById(idProd);
         obj.put("status",1);
         return obj.toString();
     }
@@ -49,6 +49,13 @@ public class CartController implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-
+        /*Cart cart = this.cs.addCart();
+        this.cs.addCommand(cart);
+        List<Product> products = new ArrayList<>();
+        products.add(new Product());
+        products.add(new Product());
+        products.add(new Product());
+        products.add(new Product());
+        fillOrderByProducts(products,cart);*/
     }
 }

@@ -7,12 +7,9 @@ import com.example.backterra.Entity.Store.Product;
 import com.example.backterra.repositories.CartRepository;
 import com.example.backterra.repositories.CommandRepository;
 import com.example.backterra.repositories.ProductRepository;
-import net.minidev.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -49,7 +46,7 @@ public class CartService {
                 .get();
         return this.pr.fetchProducts(c.getId());
     }
-    public boolean fillCommandByProducts(List<Product> products ,Cart cart){
+    public void fillCommandByProducts(List<Product> products ,Cart cart){
         Command command = this.commandRepository.getCommandByCartId(cart.getId())
                 .stream()
                 .filter(y->!y.isClosed())
@@ -59,11 +56,10 @@ public class CartService {
             x.setCommand(Collections.singletonList(command));
             this.pr.save(x);
         });
-        return true;
     }
 
-    public void deleteProductById(Long idCart , Long idProd){
-        //this.pr.deleteProductById(idCart,idProd);
+    public void deleteProductById(Long idProd){
+        this.pr.deleteById(idProd);
     }
 
 }
